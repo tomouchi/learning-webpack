@@ -2,13 +2,13 @@
   "name": "learningwebpack",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
+  "private": true,
   "scripts": {
     "start": "webpack-dev-server --open",
     "build": "webpack --config webpack.config.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Tomokazu Uchiyama",
   "license": "ISC",
   "devDependencies": {
     "prettier": "1.17.1",
