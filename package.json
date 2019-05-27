@@ -11,6 +11,7 @@
   "author": "Tomokazu Uchiyama",
   "license": "ISC",
   "devDependencies": {
+    "html-webpack-plugin": "^3.2.0",
     "prettier": "1.17.1",
     "webpack": "^4.32.2",
     "webpack-cli": "^3.3.2",
