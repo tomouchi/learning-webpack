@@ -8,6 +8,9 @@ module.exports = {
     path: `${__dirname}/dist`,
     filename: "main.js",
   },
+  module: {
+    rules: [{ test: /\.ts$/, use: "ts-loader", exclude: /node_modules/ }],
+  },
   plugins: [
     new webpack.ProvidePlugin({
       //Shimming
@@ -39,7 +42,8 @@ module.exports = {
     //指定するとデフォルト値が無視される
     //デフォルト['.wasm', '.mjs', '.js', '.json']
     //同じファイル名の場合は配列の最初に指定されたもので解決される
-    extensions: [".samplejs"] },
+    extensions: [".samplejs", ".ts"],
+  },
   devServer: {
     contentBase: "./dist",
   },
