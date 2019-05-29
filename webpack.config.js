@@ -34,6 +34,12 @@ module.exports = {
       defaultAttribute: "defer",
     }),
   ],
+  resolve: {
+    //import時に拡張子を付けなくてもpathが解決される
+    //指定するとデフォルト値が無視される
+    //デフォルト['.wasm', '.mjs', '.js', '.json']
+    //同じファイル名の場合は配列の最初に指定されたもので解決される
+    extensions: [".samplejs"] },
   devServer: {
     contentBase: "./dist",
   },

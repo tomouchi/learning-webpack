@@ -1,0 +1,2 @@
+const exportText = 'export sample text';
+export default exportText;
