@@ -1,5 +1,6 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const webpack = require("webpack");
 
 module.exports = {
@@ -7,12 +8,13 @@ module.exports = {
   entry: "./src/index.js",
   output: {
     path: `${__dirname}/dist`,
-    filename: "main.js",
+    filename: "main.[hash].js",
   },
   module: {
     rules: [{ test: /\.ts$/, use: "ts-loader", exclude: /node_modules/ }],
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new webpack.ProvidePlugin({
       //Shimming
       //グローバル変数にモジュールを挿す
