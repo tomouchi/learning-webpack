@@ -3,6 +3,7 @@ const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
 const webpack = require("webpack");
 
 module.exports = {
+  mode: 'development',
   entry: "./src/index.js",
   output: {
     path: `${__dirname}/dist`,
