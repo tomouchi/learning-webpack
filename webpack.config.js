@@ -1,19 +1,24 @@
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
+const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const webpack = require("webpack");
 
 module.exports = {
-  mode: 'development',
+  mode: "development",
   entry: "./src/index.js",
   output: {
     path: `${__dirname}/dist`,
     filename: "main.[hash].js",
   },
   module: {
-    rules: [{ test: /\.ts$/, use: "ts-loader", exclude: /node_modules/ }],
+    rules: [
+      { test: /\.ts$/, use: "ts-loader", exclude: /node_modules/ },
+      { test: /\.vue$/, loader: "vue-loader", exclude: /node_modules/ },
+    ],
   },
   plugins: [
+    new VueLoaderPlugin(),
     new CleanWebpackPlugin(),
     new webpack.ProvidePlugin({
       //Shimming
@@ -45,7 +50,7 @@ module.exports = {
     //指定するとデフォルト値が無視される
     //デフォルト['.wasm', '.mjs', '.js', '.json']
     //同じファイル名の場合は配列の最初に指定されたもので解決される
-    extensions: [".samplejs", ".ts"],
+    extensions: [".samplejs", ".ts", ".vue"],
   },
   devServer: {
     contentBase: "./dist",
