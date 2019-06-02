@@ -50,7 +50,8 @@ module.exports = {
     //指定するとデフォルト値が無視される
     //デフォルト['.wasm', '.mjs', '.js', '.json']
     //同じファイル名の場合は配列の最初に指定されたもので解決される
-    extensions: [".samplejs", ".ts", ".vue"],
+    //webpack-dev-serverを動かすには.jsは必須
+    extensions: [".samplejs", ".ts", ".vue", ".js"],
   },
   devServer: {
     contentBase: "./dist",
