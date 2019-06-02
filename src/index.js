@@ -3,6 +3,7 @@ import sampleText from "./sampletext";
 import typescriptText from "./type";
 import Vue from "vue";
 import './style.cssf'
+import './style.css'
 
 jQuery(".jquery").text("added text"); //Shimming
 jQuery(".exportText").text(text); //Shimming
