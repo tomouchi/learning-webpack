@@ -16,7 +16,7 @@ module.exports = {
       { test: /\.ts$/, use: "ts-loader", exclude: /node_modules/ },
       { test: /\.vue$/, loader: "vue-loader", exclude: /node_modules/ },
       { test: /\.cssf$/, use: ["style-loader/url", "file-loader"] },
-      { test: /\.css$/i, use: ["style-loader", "css-loader"] },
+      { test: /\.css$/i, use: ["style-loader", "css-loader"] }, //iオプションは大文字小文字の判断しない
     ],
   },
   plugins: [
