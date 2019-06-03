@@ -1,0 +1,4 @@
+.mini-css-extract-plugin {
+  color: white;
+  background: green;
+}

@@ -1,5 +1,6 @@
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const webpack = require("webpack");
@@ -15,19 +16,27 @@ module.exports = {
     rules: [
       { test: /\.ts$/, use: "ts-loader", exclude: /node_modules/ },
       { test: /\.vue$/, loader: "vue-loader", exclude: /node_modules/ },
-      { test: /\.cssf$/, use: ["style-loader/url", "file-loader"] },
-      { test: /\.css$/i, use: ["style-loader", "css-loader"] }, //iオプションは大文字小文字の判断しない
+      {
+        test: /\.css$/i,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader, //build時にHTMLにlinkタブとして追加される
+            options: {
+              // you can specify a publicPath here
+              // by default it uses publicPath in webpackOptions.output
+              publicPath: "../",
+              hmr: process.env.NODE_ENV === "development",
+            },
+          },
+          "css-loader",
+        ],
+      },
+      { test: /\.cssf$/, use: ["style-loader/url", "file-loader"] }, //scriptが走った時にlinkタブが追加される
+      { test: /\.csss$/i, use: ["style-loader", "css-loader"] }, //iオプションは大文字小文字の判断しない
     ],
   },
   plugins: [
-    new VueLoaderPlugin(),
     new CleanWebpackPlugin(),
-    new webpack.ProvidePlugin({
-      //Shimming
-      //グローバル変数にモジュールを挿す
-      //https://qiita.com/ironsand/items/4f0342f5914a9ae99b0e
-      jQuery: "jquery",
-    }),
     new HtmlWebpackPlugin({
       title: "learning webpack",
       filename: "index.html",
@@ -43,8 +52,20 @@ module.exports = {
         removeRedundantAttributes: true, //属性値がデフォルトのものは削除（inputのtext属性とか）
       },
     }),
+    //https://github.com/webpack-contrib/mini-css-extract-plugin
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      // chunkFilename: '[id].css',
+    }),
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: "defer",
+    }),
+    new VueLoaderPlugin(),
+    new webpack.ProvidePlugin({
+      //Shimming
+      //グローバル変数にモジュールを挿す
+      //https://qiita.com/ironsand/items/4f0342f5914a9ae99b0e
+      jQuery: "jquery",
     }),
   ],
   resolve: {
@@ -60,7 +81,7 @@ module.exports = {
   },
   devtool: "eval-source-map",
   externals: {
-    chunk: ['_','chunk'], ////CDNで読み込まれた _ 変数chunkメソッド
+    chunk: ["_", "chunk"], //CDNで読み込まれた _ 変数chunkメソッド
     lodash: "_", //CDNで読み込まれた _ 変数
   },
 };
