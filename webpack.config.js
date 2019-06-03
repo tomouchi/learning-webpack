@@ -59,4 +59,8 @@ module.exports = {
     contentBase: "./dist",
   },
   devtool: "eval-source-map",
+  externals: {
+    chunk: ['_','chunk'], ////CDNで読み込まれた _ 変数chunkメソッド
+    lodash: "_", //CDNで読み込まれた _ 変数
+  },
 };

@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title><%= htmlWebpackPlugin.options.title %></title>
-<!--  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> Shimmingの確認で使用-->
+  <!--  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> Shimmingの確認で使用 -->
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script><!-- Externalsの確認に使用 CDNで読み込んだ際に _ がグローバルに定義される-->
 </head>
 <body>
 <!--comment-->
@@ -14,8 +15,8 @@
 <div hidden="hidden"><span>    e e   </span></div>
 <input type="text" hidden="hidden"       disabled="disabled">
 <img src="" alt=""/>
-<div id="vue"></div><!-- vue-loaderの確認で使用 -->
 <div class="css">style-loader & file-loader(vue color)</div><!-- style-loader & file-loaderの確認で使用 -->
 <div class="css-loader">style-loader & css-loader</div><!-- style-loader & css-loaderの確認で使用 -->
+<div id="vue"></div><!-- vue-loaderの確認で使用 -->
 </body>
 </html>
