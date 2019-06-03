@@ -1,4 +1,4 @@
-.mini-css-extract-plugin {
+.css-loader {
   color: white;
   background: green;
 }

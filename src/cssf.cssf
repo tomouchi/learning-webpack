@@ -1,4 +1,4 @@
-.css {
+.file-loader {
   color: #35495e;
   background: #40b883;
 }

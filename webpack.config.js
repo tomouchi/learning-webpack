@@ -32,7 +32,7 @@ module.exports = {
         ],
       },
       { test: /\.cssf$/, use: ["style-loader/url", "file-loader"] }, //scriptが走った時にlinkタブが追加される
-      { test: /\.csss$/i, use: ["style-loader", "css-loader"] }, //iオプションは大文字小文字の判断しない
+      { test: /\.cssc$/i, use: ["style-loader", "css-loader"] }, //iオプションは大文字小文字の判断しない
     ],
   },
   plugins: [
