@@ -4,6 +4,9 @@
     <div>{{ env }}</div><!-- NODE_ENVの確認 -->
     <div>{{ lodash }}</div><!-- Externalsの確認に使用 -->
     <div>{{ chunk }}</div><!-- Externalsの確認に使用 -->
+    <div class="parent"><!-- sass-loaderの確認に使用 -->
+      <div class="parent__child">child</div><!-- sass-loaderの確認に使用 -->
+    </div>
   </div>
 </template>
 
@@ -23,4 +26,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.parent{
+  background-color: bisque;
+  padding: 10px;
+  &__child{
+    margin: auto auto;
+  }
+}
+</style>
