@@ -56,6 +56,8 @@ module.exports = {
         removeRedundantAttributes: true, //属性値がデフォルトのものは削除（inputのtext属性とか）
       },
     }),
+    //https://github.com/jantimon/html-webpack-plugin#generating-multiple-html-files
+    new HtmlWebpackPlugin({filename:'sub.html'}),
     //https://github.com/webpack-contrib/mini-css-extract-plugin
     new MiniCssExtractPlugin({
       filename: "[name].css",
