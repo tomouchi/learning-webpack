@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <div>vue</div>
+  <section>
+    <h2>index.vue</h2>
     <div>{{ env }}</div><!-- NODE_ENVの確認 -->
     <div>{{ lodash }}</div><!-- Externalsの確認に使用 -->
     <div>{{ chunk }}</div><!-- Externalsの確認に使用 -->
     <div class="parent"><!-- sass-loaderの確認に使用 -->
       <div class="parent__child">child</div><!-- sass-loaderの確認に使用 -->
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -15,7 +15,6 @@ import lodash from "lodash"; //Externalsの確認に使用 Webpackのexternals�
 import chunk from "chunk"; //Externalsの確認に使用 Webpackのexternalsに紐づいている
 
 export default {
-  name: "vue",
   data() {
     return {
       env: process.env.NODE_ENV,
