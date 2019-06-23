@@ -34,9 +34,10 @@ module.exports = {
           },
           "css-loader",
         ],
+        exclude: [/\.file-loader\.css$/, /\.style-loader\.css$/],
       },
-      { test: /\.cssf$/, use: ["style-loader/url", "file-loader"] }, //HTMLファイルにlinkタグが記述されるのではなくscriptが走った時にlinkタブが追加される
-      { test: /\.cssc$/i, use: ["style-loader", "css-loader"] }, //iオプションは大文字小文字の判断しない
+      { test: /\.file-loader\.css$/, use: ["style-loader/url", "file-loader"] }, //HTMLファイルにlinkタグが記述されるのではなくscriptが走った時にlinkタブが追加される
+      { test: /\.style-loader\.css$/, use: ["style-loader", "css-loader"] }, //webpackでの正規表現は大文字小文字判断してないため正規表現のiオプションを付けても意味がない（webpackというよりloaderの仕様かも）
     ],
   },
   plugins: [
