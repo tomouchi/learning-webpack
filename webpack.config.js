@@ -7,10 +7,11 @@ const webpack = require("webpack");
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.js",
+  entry: { index: "./src/index.js", sub: "./src/sub.js" }, //オブジェクトだとそれぞれの要素をそれぞれのentryとしてbundleする
+  // entry: ["./src/main.js", "./src/sub.js"], //配列だと複数のentryを1つのentryとしてbundleする
   output: {
     path: `${__dirname}/dist`,
-    filename: "main.[hash].js",
+    filename: "[name].[hash].js",
   },
   module: {
     rules: [
@@ -46,6 +47,7 @@ module.exports = {
       title: "learning webpack",
       filename: "index.html",
       template: "src/index.html",
+      excludeChunks:["sub"],
       minify: {
         //https://github.com/kangax/html-minifier
         removeComments: true, //コメント削除
@@ -58,7 +60,7 @@ module.exports = {
       },
     }),
     //https://github.com/jantimon/html-webpack-plugin#generating-multiple-html-files
-    new HtmlWebpackPlugin({ filename: "sub.html" }),
+    new HtmlWebpackPlugin({ filename: "sub.html", template: "src/sub.html", chunks: ["sub"] }),
     //https://github.com/webpack-contrib/mini-css-extract-plugin
     new MiniCssExtractPlugin({
       filename: "[name].css",
