@@ -35,7 +35,7 @@ module.exports = {
           "css-loader",
         ],
       },
-      { test: /\.cssf$/, use: ["style-loader/url", "file-loader"] }, //scriptが走った時にlinkタブが追加される
+      { test: /\.cssf$/, use: ["style-loader/url", "file-loader"] }, //HTMLファイルにlinkタグが記述されるのではなくscriptが走った時にlinkタブが追加される
       { test: /\.cssc$/i, use: ["style-loader", "css-loader"] }, //iオプションは大文字小文字の判断しない
     ],
   },
@@ -57,7 +57,7 @@ module.exports = {
       },
     }),
     //https://github.com/jantimon/html-webpack-plugin#generating-multiple-html-files
-    new HtmlWebpackPlugin({filename:'sub.html'}),
+    new HtmlWebpackPlugin({ filename: "sub.html" }),
     //https://github.com/webpack-contrib/mini-css-extract-plugin
     new MiniCssExtractPlugin({
       filename: "[name].css",
