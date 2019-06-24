@@ -13,6 +13,9 @@ module.exports = {
     path: `${__dirname}/dist`,
     filename: "[name].[hash].js",
   },
+  optimization: {
+    splitChunks: { name: "splitChunks", chunks: "initial" }, //分割されたentryで共通で使われているモジュールを一つのファイルにまとめる
+  },
   module: {
     rules: [
       {
@@ -47,7 +50,7 @@ module.exports = {
       title: "learning webpack",
       filename: "index.html",
       template: "src/index.html",
-      excludeChunks:["sub"],
+      excludeChunks: ["sub"],
       minify: {
         //https://github.com/kangax/html-minifier
         removeComments: true, //コメント削除
