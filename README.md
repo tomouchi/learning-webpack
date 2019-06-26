@@ -1,8 +1,9 @@
 # Learning webpack
-## MEMO
-- `npm init -y`  
+## Start
+1. `npm init -y`  
     - `-y`オプションを付けると既定値でpackage.jsonを作成する。
     - `-y`オプションを付けないといろいろ設定を訊かれる。
-- `npm i --save-dev html-webpack-plugin`
-    - Minification
-        - https://github.com/jantimon/html-webpack-plugin#minification
+0. `npm install --save-dev webpack webpack-cli`
+
+## build
+- `npx webpack`
