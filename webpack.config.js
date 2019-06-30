@@ -55,7 +55,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(), //CLIで表示したいためプラグインとしては入れない
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: "learning webpack",

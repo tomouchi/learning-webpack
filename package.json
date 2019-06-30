@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server",
     "open": "webpack-dev-server --open",
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack --config webpack.config.js",
+    "analyze": "webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json --mode server"
   },
   "keywords": [],
   "author": "Tomokazu Uchiyama",
