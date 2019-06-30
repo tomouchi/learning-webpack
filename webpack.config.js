@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const webpack = require("webpack");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 module.exports = {
   mode: "development",
@@ -14,7 +15,16 @@ module.exports = {
     filename: "[name].[hash].js",
   },
   optimization: {
-    splitChunks: { name: "splitChunks", chunks: "initial" }, //分割されたentryで共通で使われているモジュールを一つのファイルにまとめる
+    splitChunks: {
+      name: "splitChunks",
+      //initialは、動的importと静的importが別々として扱われる
+      // それぞれのimport種類が同じもので同じモジュールがbundleされる
+      //asyncは、動的importで同じモジュールのものがbundleされる
+      // 静的importは同じモジュールがあってもbundleされれない
+      //allは、import種別関係なくbundleされる
+      chunks: "initial",
+      automaticNameDelimiter: "-",
+    }, //分割されたentryで共通で使われているモジュールを一つのファイルにまとめる
   },
   module: {
     rules: [
@@ -45,6 +55,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new BundleAnalyzerPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: "learning webpack",

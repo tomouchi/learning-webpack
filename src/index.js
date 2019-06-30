@@ -5,6 +5,8 @@ import Vue from "vue";
 import "./style.file-loader.css";
 import "./style.style-loader.css";
 import "./style.css";
+import("react");
+import("moment");
 
 jQuery(".jquery").text("added text"); //Shimming
 jQuery(".exportText").text(text); //Shimming
