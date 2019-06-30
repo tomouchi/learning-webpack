@@ -22,6 +22,7 @@ module.exports = {
       //asyncは、動的importで同じモジュールのものがbundleされる
       // 静的importは同じモジュールがあってもbundleされれない
       //allは、import種別関係なくbundleされる
+      //https://medium.com/dailyjs/webpack-4-splitchunks-plugin-d9fbbe091fd0
       chunks: "initial",
       automaticNameDelimiter: "-",
     }, //分割されたentryで共通で使われているモジュールを一つのファイルにまとめる
